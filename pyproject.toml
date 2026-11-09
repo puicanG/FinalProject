@@ -1,0 +1,13 @@
+[project]
+name = "finalproject"
+version = "0.1.0"
+description = "Final project - AI document assistant"
+requires-python = ">=3.13"
+dependencies = [
+    "chromadb>=1.5.9",
+    "openai>=3.8.0",
+    "pydantic>=2.13.5",
+    "pymupdf4llm>=1.28.2",
+    "python-dotenv>=1.2.3",
+    "sentence-transformers>=6.1.0",
+]
