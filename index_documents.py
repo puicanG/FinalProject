@@ -27,14 +27,20 @@ def split_into_chunks(text):
 
     while start < len(text):
         # take a piece of text
-        chunk = text[start:start + CHUNK_SIZE].strip()
+        end = start + CHUNK_SIZE
+        chunk = text[start:end].strip()
 
         # we only keep it if it is not empty
         if chunk:
             chunks.append(chunk)
 
+        # if we reached the end of the text, we stop here
+        # otherwise the last chunk can be only overlap text
+        if end >= len(text):
+            break
+
         # move forward, but keep some overlap with the old chunk
-        start = start + CHUNK_SIZE - CHUNK_OVERLAP
+        start = end - CHUNK_OVERLAP
 
     return chunks
 
