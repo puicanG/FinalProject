@@ -68,7 +68,7 @@ def rag_search(collection, model, arguments):
         text = documents[i]
         metadata = metadatas[i]
 
-        # add the source and the page, so the agent can cite them
+        # add the source and the page, so the agent can read them
         piece = text + "\nSource: " + metadata["source"] + ", page " + str(metadata["page"])
         pieces.append(piece)
 
@@ -101,10 +101,8 @@ def ask_agent(client, messages, tools):
 
 def main():
     # make sure special characters from the LLM can be printed on Windows
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    if hasattr(sys.stdin, "reconfigure"):
-        sys.stdin.reconfigure(encoding="utf-8", errors="replace")
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stdin.reconfigure(encoding="utf-8", errors="replace")
 
     # read the .env file
     load_dotenv()

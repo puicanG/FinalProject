@@ -103,9 +103,12 @@ def main():
         current_sources.add(file_path.name)
 
     old_items = collection.get(include=["metadatas"])
+    old_metadatas = old_items["metadatas"] or []
+
     old_sources = set()
-    for metadata in old_items["metadatas"]:
-        old_sources.add(metadata["source"])
+    for metadata in old_metadatas:
+        if metadata is not None:
+            old_sources.add(metadata["source"])
 
     for source in old_sources:
         if source not in current_sources:
